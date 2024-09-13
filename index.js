@@ -1,10 +1,10 @@
 document.getElementById("consultar-btn").addEventListener("click", async () => {
-  const cep = document.getElementById("cep").value.replace(/\D/g, ""); // Remove caracteres não numéricos
+  const cep = document.getElementById("cep").value.replace(/\D/g, "");
   const resultado = document.getElementById("resultado");
 
   if (cep.length !== 8) {
     resultado.innerHTML =
-      '<p style="color: red;">Por favor, digite um CEP válido com 8 dígitos.</p>';
+      '<p>Por favor, digite um CEP com 8 dígitos.</p>';
     return;
   }
 
@@ -13,7 +13,7 @@ document.getElementById("consultar-btn").addEventListener("click", async () => {
     const data = await response.json();
 
     if (data.erro) {
-      resultado.innerHTML = '<p style="color: red;">CEP não encontrado.</p>';
+      resultado.innerHTML = '<p >CEP não encontrado.</p>';
     } else {
       resultado.innerHTML = `
                 <strong>CEP:</strong> ${data.cep}<br>
@@ -25,7 +25,7 @@ document.getElementById("consultar-btn").addEventListener("click", async () => {
     }
   } catch (error) {
     resultado.innerHTML =
-      '<p style="color: red;">Ocorreu um erro ao consultar o CEP. Tente novamente mais tarde.</p>';
+      '<p>Ocorreu um erro ao consultar o CEP. Tente novamente mais tarde.</p>';
     console.error("Erro na consulta de CEP:", error);
   }
 });
